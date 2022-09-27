@@ -1,6 +1,7 @@
 import { rest } from 'msw';
 
 import { CategoryType } from '@/@types/category';
+import { UTCStringType } from '@/@types/date';
 import { ProfileType } from '@/@types/profile';
 import { ScheduleType } from '@/@types/schedule';
 import { SubscriptionType } from '@/@types/subscription';
@@ -45,7 +46,7 @@ const handlers = [
     const newCategory: CategoryType = {
       ...req.body,
       id: categoryDB.categories.length + 1,
-      createdAt: new Date().toISOString().slice(0, -5),
+      createdAt: new Date().toISOString().slice(0, -5) as UTCStringType,
       creator: tigerProfileDB,
       categoryType: CATEGORY_TYPE.NORMAL,
     };
