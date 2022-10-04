@@ -10,23 +10,15 @@ import { CACHE_KEY } from '@/constants/api';
 
 import { removeAccessToken } from '@/utils/storage';
 
-import loginApi from '@/api/login';
 import profileApi from '@/api/profile';
+
+import { useLoginValidate } from './@queries/login';
 
 function useUserValue() {
   const [user, setUser] = useRecoilState(userState);
   const setSideBarOpen = useSetRecoilState(sideBarState);
 
-  const { isLoading, isSuccess } = useQuery<AxiosResponse, AxiosError>(
-    CACHE_KEY.VALIDATE,
-    () => loginApi.validate(user.accessToken),
-    {
-      onError: () => onErrorValidate(),
-      retry: false,
-      useErrorBoundary: false,
-      enabled: !!user.accessToken,
-    }
-  );
+  const { isLoading, isSuccess } = useLoginValidate();
 
   useQuery<AxiosResponse<ProfileType>, AxiosError>(
     CACHE_KEY.PROFILE,
