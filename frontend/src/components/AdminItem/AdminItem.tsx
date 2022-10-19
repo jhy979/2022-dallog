@@ -42,7 +42,12 @@ function AdminItem({ categoryId, admin }: AdminItemProps) {
 
   return (
     <div key={admin.id} css={adminItemStyle}>
-      <img src={admin.profileImageUrl} alt="프로필 이미지" css={profileImageStyle} />
+      <img
+        src={admin.profileImageUrl}
+        alt="프로필 이미지"
+        css={profileImageStyle}
+        referrerPolicy="no-referrer"
+      />
       <span css={displayNameStyle}>{admin.displayName}</span>
       {admin.id !== id && (
         <Button cssProp={adminButtonStyle} onClick={handleClickDeleteRoleButton}>

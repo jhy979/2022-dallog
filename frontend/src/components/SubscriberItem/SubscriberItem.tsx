@@ -36,7 +36,12 @@ function SubscriberItem({ categoryId, subscriber }: SubscriberItemProps) {
 
   return (
     <div key={subscriber.id} css={subscriberItemStyle}>
-      <img src={subscriber.profileImageUrl} alt="프로필 이미지" css={profileImageStyle} />
+      <img
+        src={subscriber.profileImageUrl}
+        alt="프로필 이미지"
+        css={profileImageStyle}
+        referrerPolicy="no-referrer"
+      />
       <span css={displayNameStyle}>{subscriber.displayName}</span>
       <Button cssProp={adminButtonStyle} onClick={handleClickAddRoleButton}>
         <MdOutlineAdminPanelSettings />

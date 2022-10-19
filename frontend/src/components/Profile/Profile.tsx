@@ -66,7 +66,12 @@ function Profile() {
 
   return (
     <div css={layoutStyle}>
-      <img src={user.profileImageUrl} css={imageStyle} alt="프로필 이미지" />
+      <img
+        src={user.profileImageUrl}
+        css={imageStyle}
+        alt="프로필 이미지"
+        referrerPolicy="no-referrer"
+      />
       <div css={contentStyle}>
         {isEditingName ? (
           <form css={nameButtonStyle}>
